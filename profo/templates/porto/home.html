@@ -1,0 +1,31 @@
+{% extends 'porto/base.html' %}
+{% block cont %}
+
+<h1> For the glory of the HORDE  </h1>
+<p> name : Behzad hoseinzadeh</p>
+<p> junior web developer </p>
+
+<a href="{% url 'blog:all_blog' %}" class="btn btn-primary">blog</a>
+
+<br>
+{% load static %}
+<a href="{% static 'profo/resume.pdf' %}" class="btn btn-alert">Resume</a>
+<center>
+<br>
+<img src="{% static 'profo/boz.jpg'%}" height="600" width="480">
+
+
+{% for item in projects %}
+
+<h2>{{ item.title }}</h2>
+<p>{{ item.desc }}</p>
+<img src="{{ item.image.url }}" height="150" width="200">
+  {% if item.url %}
+    <a href="{{item.url}}"> link </a>
+  {% endif %}
+
+
+{% endfor %}
+</center>
+
+{% endblock %}
